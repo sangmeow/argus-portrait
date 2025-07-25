@@ -32,7 +32,7 @@ app.post("/", async (req: Request, res: Response) => {
   // filtering result
   console.log(result?.output_text, null, 2);
   // response content
-  res.json(Object.assign(JSON.parse(result?.output_text || "{}")));
+  res.json(Object.assign(requestBody, JSON.parse(result?.output_text || "{}")));
 });
 
 app.listen(port, () => {
