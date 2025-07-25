@@ -1,0 +1,35 @@
+{
+  "name": "orpheus-lyre",
+  "version": "1.0.0",
+  "description": "An intelligent filtering API that blocks harmful language and profanity—ensuring a safer, healthier space for communication.",
+  "main": "dist/express.js",
+  "scripts": {
+    "start": "npm install && npx tsc && export NODE_ENV=prod && node ./dist/express.js",
+    "start.win": "npm install&& npx tsc&& set NODE_ENV=prod&& node dist/express.js",
+    "build:start.mac": "npx tsc && node dist/express.js",
+    "build:start.win": "npx tsc&& node dist/express.js",
+    "dev.mac": "export NODE_ENV=dev && nodemon --watch ./src/**/*.ts --exec ts-node src/express.ts",
+    "dev.win": "set NODE_ENV=dev&& nodemon --watch ./src/**/*.ts --exec ts-node src/express.ts"
+  },
+  "keywords": [],
+  "author": "oasiscity",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.14",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "openai": "^5.10.1",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.31.0",
+    "concurrently": "^9.2.0",
+    "eslint": "^9.31.0",
+    "globals": "^16.3.0",
+    "nodemon": "^3.1.10",
+    "prettier": "3.6.2",
+    "ts-node": "^10.9.2",
+    "typescript-eslint": "^8.37.0"
+  }
+}

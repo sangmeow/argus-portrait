@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "rootDirs": ["src"] /* 입력 파일들의 루트 디렉토리 설정. --outDir 옵션을 사용해 출력 디렉토리 설정이 가능 */,
+    "outDir": "./dist" /* 출력될 디렉토리 설정 */,
+    "lib": ["es2020"] /* 컴파일 과정에 사용될 라이브러리 파일 설정 */,
+    "target": "es5" /* ECMAScript 목표 버전 설정: 'ES3'(기본), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */,
+    "module": "CommonJS" /* 생성될 모듈 코드 설정: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */,
+    "moduleResolution": "node" /* 모듈 분석 방법 설정: 'node' (Node.js) 또는 'classic' (TypeScript pre-1.6). */,
+    "strict": true /* 모든 엄격한 유형 검사 옵션 활성화 */,
+    "esModuleInterop": true /* 모든 가져오기에 대한 네임스페이스 객체 생성을 통해 CommonJS와 ES 모듈 간의 상호 운용성을 제공. 'allowSyntheticDefaultImports' 암시 */,
+    "skipLibCheck": true /* 선언 파일 유형 검사 스킵 */,
+    "forceConsistentCasingInFileNames": true /* 동일한 파일에 대한 일관되지 않은 케이스 참조를 허용하지 않음 */,
+    "types": ["node"] /* 컴파일 시 포함될 유형 선언 파일 입력 */
+  },
+  "exclude": ["node_modules"],
+  "include": ["./src/**/*.tsx", "./src/**/*.ts"]
+}
