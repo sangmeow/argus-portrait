@@ -21,7 +21,7 @@ export const prompt = `
   - "inappropriate_score": 0~100 숫자
     - 0 = 전혀 부적절하지 않음
     - 100 = 극도로 부적절함
-    - 의심스러운 경우 최소 20 이상 부여
+    - 의심스러운 경우 최소 10 이상 부여
 
   JSON Schema:
   {
