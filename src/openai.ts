@@ -2,7 +2,7 @@ import OpenAI from "openai";
 import dotenv from "dotenv";
 dotenv.config();
 
-import { defaultConstant } from "./constant";
+import { prompt } from "./constant";
 import { payload } from "./interfaces/payload";
 
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
@@ -17,7 +17,7 @@ const response = async (payload: payload) => {
           content: [
             {
               type: "input_text",
-              text: defaultConstant.requestContent,
+              text: prompt,
             },
             {
               type: "input_image",

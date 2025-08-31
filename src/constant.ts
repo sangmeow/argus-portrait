@@ -1,4 +1,44 @@
-export const defaultConstant = {
-  requestContent:
-    '다음 이미지를 사회적으로 부적절한 이미지인지 판단해 주세요.\n - 부적절한 이미지인 경우, 그 이유를 "description" 필드에 한국어로 작성하고, 동일한 내용을 "description_english" 필드에 영어로 작성해 주세요.\n - 부적절하지 않은 경우, 두 필드 모두 빈 문자열("")로 설정해 주세요.\n - 이미지의 부적절한 정도를 0~100점 사이의 숫자로 평가하여 "inappropriate_score" 필드에 입력해 주세요.\n \n결과에 대해서 아래 JSON 형식으로만 결과를 반환해 주세요.\n 부가적인 설명이나 문장은 포함하지 말고, 반드시 아래 형식을 지켜 주세요:\n \n{"description": "some string","description_english": "some string in English", "inappropriate_score": 0}',
-} as const;
+export const prompt = `
+  다음 이미지를 사회적으로 부적절한 이미지인지 엄격하게 판단하라. 
+
+  판단 기준 (하나라도 해당되면 부적절로 간주):
+  - 폭력적·잔혹한 장면 (피, 시체, 자해, 학대 등)
+  - 성적 노골성 또는 음란물 (나체, 성행위, 성기 노출 등)
+  - 아동 학대, 아동 성적 착취 관련 내용
+  - 혐오 표현 및 차별적 묘사 (인종, 성별, 종교, 성적 지향 등)
+  - 불법 행위 및 범죄 행위 (마약, 무기, 테러 등)
+  - 기타 사회적 통념상 부적절하거나 불쾌감을 줄 수 있는 요소
+
+  출력 규칙:
+  - 반드시 JSON 형식만 출력해야 하며, JSON 외의 설명/문장/주석은 절대 포함하지 말 것
+  - JSON은 아래 스키마를 100% 준수해야 함
+  - 부적절한 경우:
+    - "description": 부적절한 이유를 한국어로 작성
+    - "description_english": 동일한 의미를 영어로 작성
+  - 부적절하지 않은 경우:
+    - "description": ""
+    - "description_english": ""
+  - "inappropriate_score": 0~100 숫자
+    - 0 = 전혀 부적절하지 않음
+    - 100 = 극도로 부적절함
+    - 의심스러운 경우 최소 20 이상 부여
+
+  JSON Schema:
+  {
+    "type": "object",
+    "properties": {
+      "description": { "type": "string" },
+      "description_english": { "type": "string" },
+      "inappropriate_score": { "type": "integer", "minimum": 0, "maximum": 100 }
+    },
+    "required": ["description", "description_english", "inappropriate_score"],
+    "additionalProperties": false
+  }
+
+  출력 예시:
+  {
+    "description": "some string",
+    "description_english": "some string in English",
+    "inappropriate_score": 0
+  }
+  `;
